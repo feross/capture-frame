@@ -7,7 +7,7 @@
 [downloads-image]: https://img.shields.io/npm/dm/capture-frame.svg
 [downloads-url]: https://npmjs.org/package/capture-frame
 
-### Capture video screenshot from a `<video>` tag
+### Capture video screenshot from a `<video>` tag (at the current time)
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/capture-frame.svg)](https://saucelabs.com/u/capture-frame)
 

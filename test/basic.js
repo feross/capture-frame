@@ -1,9 +1,5 @@
 const captureFrame = require('../')
-const fs = require('fs')
-const path = require('path')
 const test = require('tape')
-
-const EXPECTED_FRAME = fs.readFileSync(path.join(__dirname, 'frame.png'))
 
 test('throws on invalid arguments', (t) => {
   t.throws(() => {
@@ -27,7 +23,7 @@ test('throws on invalid arguments', (t) => {
   t.end()
 })
 
-test('works on test.webm', (t) => {
+test('capture frame from `test.webm`', (t) => {
   t.plan(2)
 
   const video = document.createElement('video')
@@ -35,7 +31,7 @@ test('works on test.webm', (t) => {
 
   video.volume = 0
   video.setAttribute('crossOrigin', 'anonymous')
-  video.src = `http://localhost:${window.ZUUL.port}/test.webm`
+  video.src = '/test.webm'
   video.play()
 
   function onCanPlay () {
@@ -56,6 +52,6 @@ test('works on test.webm', (t) => {
     video.load()
 
     t.ok(buf.length, 'Captured image contains data')
-    t.deepEqual(buf, EXPECTED_FRAME)
+    t.deepEqual(buf.slice(0, 8).toString('hex'), '89504e470d0a1a0a')
   }
 })

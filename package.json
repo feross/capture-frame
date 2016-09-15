@@ -1,6 +1,6 @@
 {
   "name": "capture-frame",
-  "description": "Capture video screenshot from a <video> tag",
+  "description": "Capture video screenshot from a `<video>` tag (at the current time)",
   "version": "0.0.0",
   "author": {
     "name": "Feross Aboukhadijeh",
@@ -11,7 +11,6 @@
     "url": "https://github.com/feross/capture-frame/issues"
   },
   "devDependencies": {
-    "brfs": "^1.4.3",
     "cors": "^2.8.1",
     "ecstatic": "^2.1.0",
     "standard": "*",
