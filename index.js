@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = captureFrame
 
 function captureFrame (video, format) {
