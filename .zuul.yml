@@ -4,6 +4,4 @@ browsers:
     version: latest
   - name: firefox
     version: latest
-  - name: microsoftedge
-    version: latest
 server: ./test/server/index.js
