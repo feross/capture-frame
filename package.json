@@ -1,0 +1,44 @@
+{
+  "name": "capture-frame",
+  "description": "Capture video screenshot from a <video> tag",
+  "version": "0.0.0",
+  "author": {
+    "name": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "http://feross.org/"
+  },
+  "bugs": {
+    "url": "https://github.com/feross/capture-frame/issues"
+  },
+  "devDependencies": {
+    "brfs": "^1.4.3",
+    "cors": "^2.8.1",
+    "ecstatic": "^2.1.0",
+    "standard": "*",
+    "tape": "^4.0.0",
+    "zuul": "^3.0.0"
+  },
+  "homepage": "https://github.com/feross/capture-frame",
+  "keywords": [
+    "browser",
+    "browser video",
+    "canvas",
+    "capture",
+    "frame",
+    "screenshot",
+    "video",
+    "video screenshot",
+    "video tag"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/feross/capture-frame.git"
+  },
+  "scripts": {
+    "test": "standard && npm run test-browser",
+    "test-browser": "zuul -- test/*.js",
+    "test-browser-local": "zuul --local -- test/*.js"
+  }
+}
