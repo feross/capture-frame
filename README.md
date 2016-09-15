@@ -26,7 +26,7 @@ npm install capture-frame
 ```js
 const captureFrame = require('capture-frame')
 
-const frame = captureFrame('.video')
+const buf = captureFrame('.video') // Buffer that contains .png file data
 
 // show the captured video frame in the DOM
 const image = document.createElement('img')
