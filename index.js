@@ -15,8 +15,8 @@ function captureFrame (video, format) {
     format = 'png'
   }
 
-  if (format !== 'png' && format !== 'jpg' && format !== 'webp') {
-    throw new TypeError('Second argument must be one of "png", "jpg", or "webp"')
+  if (format !== 'png' && format !== 'jpeg' && format !== 'webp') {
+    throw new TypeError('Second argument must be one of "png", "jpeg", or "webp"')
   }
 
   const canvas = document.createElement('canvas')

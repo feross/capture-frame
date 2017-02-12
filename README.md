@@ -80,7 +80,7 @@ reference to a video element in the page, or a string CSS selector. This must
 refer to a video element.
 
 Optionally, specify a `format` for the image to be captured in. Must be one of
-"png", "jpg", or "webp".
+"png", "jpeg", or "webp".
 
 ## license
 
