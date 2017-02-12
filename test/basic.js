@@ -78,12 +78,3 @@ test('capture frame from `test.webm` (jpeg)', (t) => {
     t.equal(fileType(buf).ext, 'jpg')
   })
 })
-
-test('capture frame from `test.webm` (webp)', (t) => {
-  t.plan(3)
-  captureFromTestWebm(t, 'webp', (err, buf) => {
-    t.error(err)
-    t.equal(fileType(buf).ext, 'webp')
-  })
-})
-
