@@ -1,4 +1,5 @@
 const captureFrame = require('../')
+const fileType = require('file-type')
 const test = require('tape')
 
 test('throws on invalid arguments', (t) => {
@@ -23,9 +24,7 @@ test('throws on invalid arguments', (t) => {
   t.end()
 })
 
-test('capture frame from `test.webm`', (t) => {
-  t.plan(2)
-
+function captureFromTestWebm (t, format, cb) {
   const video = document.createElement('video')
   video.addEventListener('canplay', onCanPlay)
 
@@ -44,7 +43,7 @@ test('capture frame from `test.webm`', (t) => {
   function onSeeked () {
     video.removeEventListener('seeked', onSeeked)
 
-    const buf = captureFrame(video)
+    const buf = captureFrame(video, format)
 
     // unload video element
     video.pause()
@@ -52,6 +51,39 @@ test('capture frame from `test.webm`', (t) => {
     video.load()
 
     t.ok(buf.length, 'Captured image contains data')
-    t.deepEqual(buf.slice(0, 8).toString('hex'), '89504e470d0a1a0a')
+    cb(null, buf)
   }
+}
+
+test('capture frame from `test.webm` (default)', (t) => {
+  t.plan(3)
+  captureFromTestWebm(t, null, (err, buf) => {
+    t.error(err)
+    t.equal(fileType(buf).ext, 'png')
+  })
 })
+
+test('capture frame from `test.webm` (png)', (t) => {
+  t.plan(3)
+  captureFromTestWebm(t, 'png', (err, buf) => {
+    t.error(err)
+    t.equal(fileType(buf).ext, 'png')
+  })
+})
+
+test('capture frame from `test.webm` (jpeg)', (t) => {
+  t.plan(3)
+  captureFromTestWebm(t, 'jpeg', (err, buf) => {
+    t.error(err)
+    t.equal(fileType(buf).ext, 'jpg')
+  })
+})
+
+test('capture frame from `test.webm` (webp)', (t) => {
+  t.plan(3)
+  captureFromTestWebm(t, 'webp', (err, buf) => {
+    t.error(err)
+    t.equal(fileType(buf).ext, 'webp')
+  })
+})
+
