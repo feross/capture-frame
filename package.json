@@ -12,8 +12,8 @@
   },
   "devDependencies": {
     "cors": "^2.8.1",
-    "ecstatic": "^2.1.0",
-    "file-type": "^4.1.0",
+    "ecstatic": "^3.2.0",
+    "file-type": "^7.6.0",
     "standard": "*",
     "tape": "^4.0.0",
     "zuul": "^3.0.0"
