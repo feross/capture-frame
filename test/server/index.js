@@ -10,7 +10,7 @@ const server = http.createServer(function (req, res) {
   })
 })
 
-const port = Number(process.env.ZUUL_PORT) || 8000
+const port = Number(process.env.AIRTAP_PORT) || 8000
 console.log('Test server listening on port', port)
 
 server.listen(port)
