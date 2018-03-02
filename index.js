@@ -28,5 +28,5 @@ function captureFrame (video, format) {
   const dataUri = canvas.toDataURL('image/' + format)
   const data = dataUri.split(',')[1]
 
-  return new Buffer(data, 'base64')
+  return Buffer.from(data, 'base64')
 }
