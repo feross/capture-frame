@@ -14,7 +14,7 @@
     "airtap": "0.0.5",
     "cors": "^2.8.1",
     "ecstatic": "^3.2.0",
-    "file-type": "^7.6.0",
+    "file-type": "^8.0.0",
     "standard": "*",
     "tape": "^4.0.0"
   },
