@@ -11,7 +11,7 @@
     "url": "https://github.com/feross/capture-frame/issues"
   },
   "devDependencies": {
-    "airtap": "0.0.5",
+    "airtap": "0.0.6",
     "cors": "^2.8.1",
     "ecstatic": "^3.2.0",
     "file-type": "^8.0.0",
