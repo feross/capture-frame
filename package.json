@@ -13,7 +13,7 @@
   "devDependencies": {
     "airtap": "0.1.0",
     "cors": "^2.8.1",
-    "ecstatic": "^3.2.0",
+    "ecstatic": "^4.1.2",
     "file-type": "^10.7.0",
     "standard": "*",
     "tape": "^4.0.0"
