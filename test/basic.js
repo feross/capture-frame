@@ -1,5 +1,5 @@
 const captureFrame = require('../')
-const fileType = require('file-type')
+const FileType = require('file-type/browser')
 const test = require('tape')
 
 test('throws on invalid arguments', (t) => {
@@ -57,24 +57,24 @@ function captureFromTestWebm (t, format, cb) {
 
 test('capture frame from `test.webm` (default)', (t) => {
   t.plan(3)
-  captureFromTestWebm(t, null, (err, buf) => {
+  captureFromTestWebm(t, null, async (err, buf) => {
     t.error(err)
-    t.equal(fileType(buf).ext, 'png')
+    t.equal((await FileType.fromBuffer(buf)).ext, 'png')
   })
 })
 
 test('capture frame from `test.webm` (png)', (t) => {
   t.plan(3)
-  captureFromTestWebm(t, 'png', (err, buf) => {
+  captureFromTestWebm(t, 'png', async (err, buf) => {
     t.error(err)
-    t.equal(fileType(buf).ext, 'png')
+    t.equal((await FileType.fromBuffer(buf)).ext, 'png')
   })
 })
 
 test('capture frame from `test.webm` (jpeg)', (t) => {
   t.plan(3)
-  captureFromTestWebm(t, 'jpeg', (err, buf) => {
+  captureFromTestWebm(t, 'jpeg', async (err, buf) => {
     t.error(err)
-    t.equal(fileType(buf).ext, 'jpg')
+    t.equal((await FileType.fromBuffer(buf)).ext, 'jpg')
   })
 })
