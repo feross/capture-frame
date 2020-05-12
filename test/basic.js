@@ -24,15 +24,15 @@ test('throws on invalid arguments', (t) => {
   t.end()
 })
 
-function captureFromTestMp4 (t, format, cb) {
+function captureFromTestMp4 (format, cb) {
   const video = document.createElement('video')
   video.addEventListener('canplay', onCanPlay)
 
   video.volume = 0
   video.autoplay = true
   video.muted = true
-  video.setAttribute('crossOrigin', 'anonymous')
   video.src = '/test.mp4'
+  document.body.append(video)
 
   function onCanPlay () {
     video.removeEventListener('canplay', onCanPlay)
@@ -51,31 +51,35 @@ function captureFromTestMp4 (t, format, cb) {
     video.src = ''
     video.load()
 
-    t.ok(buf.length, 'Captured image contains data')
+    video.remove()
+
     cb(null, buf)
   }
 }
 
 test('capture frame from `test.mp4` (default)', (t) => {
   t.plan(3)
-  captureFromTestMp4(t, null, async (err, buf) => {
+  captureFromTestMp4(null, async (err, buf) => {
     t.error(err)
+    t.ok(buf.length, 'Captured image contains data')
     t.equal((await FileType.fromBuffer(buf)).ext, 'png')
   })
 })
 
 test('capture frame from `test.mp4` (png)', (t) => {
   t.plan(3)
-  captureFromTestMp4(t, 'png', async (err, buf) => {
+  captureFromTestMp4('png', async (err, buf) => {
     t.error(err)
+    t.ok(buf.length, 'Captured image contains data')
     t.equal((await FileType.fromBuffer(buf)).ext, 'png')
   })
 })
 
 test('capture frame from `test.mp4` (jpeg)', (t) => {
   t.plan(3)
-  captureFromTestMp4(t, 'jpeg', async (err, buf) => {
+  captureFromTestMp4('jpeg', async (err, buf) => {
     t.error(err)
+    t.ok(buf.length, 'Captured image contains data')
     t.equal((await FileType.fromBuffer(buf)).ext, 'jpg')
   })
 })
