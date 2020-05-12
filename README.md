@@ -45,9 +45,10 @@ const video = document.createElement('video')
 video.addEventListener('canplay', onCanPlay)
 
 video.volume = 0
+video.autoplay = true
+video.muted = true // most browsers block autoplay unless muted
 video.setAttribute('crossOrigin', 'anonymous') // optional, when cross-domain
-video.src = `http://example.com/test.webm`
-video.play()
+video.src = 'http://example.com/test.mp4'
 
 function onCanPlay () {
   video.removeEventListener('canplay', onCanPlay)

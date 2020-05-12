@@ -24,14 +24,15 @@ test('throws on invalid arguments', (t) => {
   t.end()
 })
 
-function captureFromTestWebm (t, format, cb) {
+function captureFromTestMp4 (t, format, cb) {
   const video = document.createElement('video')
   video.addEventListener('canplay', onCanPlay)
 
   video.volume = 0
+  video.autoplay = true
+  video.muted = true
   video.setAttribute('crossOrigin', 'anonymous')
-  video.src = '/test.webm'
-  video.play()
+  video.src = '/test.mp4'
 
   function onCanPlay () {
     video.removeEventListener('canplay', onCanPlay)
@@ -55,25 +56,25 @@ function captureFromTestWebm (t, format, cb) {
   }
 }
 
-test('capture frame from `test.webm` (default)', (t) => {
+test('capture frame from `test.mp4` (default)', (t) => {
   t.plan(3)
-  captureFromTestWebm(t, null, async (err, buf) => {
+  captureFromTestMp4(t, null, async (err, buf) => {
     t.error(err)
     t.equal((await FileType.fromBuffer(buf)).ext, 'png')
   })
 })
 
-test('capture frame from `test.webm` (png)', (t) => {
+test('capture frame from `test.mp4` (png)', (t) => {
   t.plan(3)
-  captureFromTestWebm(t, 'png', async (err, buf) => {
+  captureFromTestMp4(t, 'png', async (err, buf) => {
     t.error(err)
     t.equal((await FileType.fromBuffer(buf)).ext, 'png')
   })
 })
 
-test('capture frame from `test.webm` (jpeg)', (t) => {
+test('capture frame from `test.mp4` (jpeg)', (t) => {
   t.plan(3)
-  captureFromTestWebm(t, 'jpeg', async (err, buf) => {
+  captureFromTestMp4(t, 'jpeg', async (err, buf) => {
     t.error(err)
     t.equal((await FileType.fromBuffer(buf)).ext, 'jpg')
   })
