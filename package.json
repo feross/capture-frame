@@ -12,11 +12,11 @@
   },
   "devDependencies": {
     "airtap": "^3.0.0",
-    "cors": "^2.8.1",
-    "ecstatic": "^4.1.2",
-    "file-type": "^14.4.0",
+    "cors": "^2.8.5",
+    "ecstatic": "^4.1.4",
+    "file-type": "^14.6.2",
     "standard": "*",
-    "tape": "^5.0.0"
+    "tape": "^5.0.1"
   },
   "homepage": "https://github.com/feross/capture-frame",
   "keywords": [
