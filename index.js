@@ -21,13 +21,17 @@ function captureFrame (video, format) {
   }
 
   const canvas = document.createElement('canvas')
-  canvas.width = video.videoWidth
-  canvas.height = video.videoHeight
+  const width = canvas.width = video.videoWidth
+  const height = canvas.height = video.videoHeight
 
   canvas.getContext('2d').drawImage(video, 0, 0)
 
   const dataUri = canvas.toDataURL('image/' + format)
   const data = dataUri.split(',')[1]
 
-  return Buffer.from(data, 'base64')
+  return {
+    image: Buffer.from(data, 'base64'),
+    width,
+    height
+  }
 }

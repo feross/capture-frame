@@ -28,11 +28,13 @@ npm install capture-frame
 ```js
 const captureFrame = require('capture-frame')
 
-const buf = captureFrame('.video') // Buffer that contains .png file data
+const frame = captureFrame('.video') // Buffer that contains .png file data
 
 // show the captured video frame in the DOM
 const image = document.createElement('img')
-image.src = window.URL.createObjectURL(new window.Blob([buf]))
+image.width = frame.width
+image.height = frame.height
+image.src = window.URL.createObjectURL(new window.Blob([frame.image]))
 document.body.appendChild(image)
 ```
 
@@ -60,7 +62,7 @@ function onCanPlay () {
 function onSeeked () {
   video.removeEventListener('seeked', onSeeked)
 
-  const buf = captureFrame(video)
+  const frame = captureFrame(video)
 
   // unload video element, to prevent memory leaks
   video.pause()
@@ -69,7 +71,9 @@ function onSeeked () {
 
   // show the captured image in the DOM
   const image = document.createElement('img')
-  image.src = window.URL.createObjectURL(new window.Blob([buf]))
+  image.width = frame.width
+  image.height = frame.height
+  image.src = window.URL.createObjectURL(new window.Blob([frame.image]))
   document.body.appendChild(image)
 }
 ```
@@ -84,6 +88,20 @@ refer to a video element.
 
 Optionally, specify a `format` for the image to be captured in. Must be one of
 "png", "jpeg", or "webp".
+
+The returned object, `frame`, has three properties:
+
+#### `frame.image`
+
+The captured image, as a `Buffer`.
+
+#### `frame.width`
+
+The captured image's width, as a `number`.
+
+#### `frame.height`
+
+The captured image's height, as a `number`.
 
 ## license
 

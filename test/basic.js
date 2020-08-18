@@ -44,7 +44,7 @@ function captureFromTestMp4 (format, cb) {
   function onSeeked () {
     video.removeEventListener('seeked', onSeeked)
 
-    const buf = captureFrame(video, format)
+    const frame = captureFrame(video, format)
 
     // unload video element
     video.pause()
@@ -53,7 +53,7 @@ function captureFromTestMp4 (format, cb) {
 
     video.remove()
 
-    cb(null, buf)
+    cb(null, frame.image)
   }
 }
 
